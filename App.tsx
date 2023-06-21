@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -15,6 +8,7 @@ import {
   Text,
   useColorScheme,
   View,
+  FlatList,
 } from 'react-native';
 
 import {
@@ -25,94 +19,80 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import {ListsProfiler, FlatListPerformanceView} from '@shopify/react-native-performance-lists-profiler';
+import {RenderPassReport, PerformanceProfiler} from '@shopify/react-native-performance';
+import { Dimensions } from 'react-native'
+import Flight from './src/flights/FlightsPage'
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+import DataModelList from './src/DataModelList';
+
+import FlashList from './src/Flashlist'
+
+const { width: deviceWidth } = Dimensions.get('window')
+
+type DataItem = {
+  key: string
+}
+
+const buildData = (count: number, startIndex: number = 0) =>
+  new Array(count).fill(1).map((v, index) => ({
+    key: `${index + startIndex}`,
+  }))
+
+
+// @ts-ignore
+const RenderItem = props => {
+  const styles = StyleSheet.create({
+    container: {
+      height: 98,
+      width: deviceWidth,
+      backgroundColor: '#eee',
+      marginBottom: 2,
+    },
+  })
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <Text>{`${props.item.key}`}</Text>
     </View>
-  );
+  )
 }
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const List = () => {
+  const [data, setData] = useState<Array<DataItem>>(buildData(20))
+  const onEndReached = useCallback(({ cb }) => {
+    console.log('hell0')
+    setData(data => {
+      // cb()
+      const newData = buildData(10, data.length)
+      return ([] as Array<DataItem>).concat(data, newData)
+    })
+  }, [])
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+    <Flight />
+  )
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const App = () => {
+  const onInteractiveCallback = useCallback((TTI: number, listName: string) => {
+    console.log(`${listName}'s TTI: ${TTI}`);
+  }, []);
+  const onBlankAreaCallback = useCallback((offsetStart: number, offsetEnd: number, listName: string) => {
+    console.log(`Blank area for ${listName}: ${Math.max(offsetStart, offsetEnd)}`);
+  }, []);
+
+  return (
+    // <PerformanceProfiler>
+      <ListsProfiler 
+        onInteractive={onInteractiveCallback} 
+        onBlankArea={onBlankAreaCallback}
+      >
+        {/* <DataModelList /> */}
+        {/* <Flight /> */}
+        <FlashList />
+      </ListsProfiler>      
+    // </PerformanceProfiler>
+  );
+};
 
 export default App;
