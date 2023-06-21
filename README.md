@@ -1,5 +1,15 @@
 # ReactNativeListComparison
 
+## prerequisite
+
+### install flashlight
+
+To enable `flashlight` dash in Flipper. `flashlight` is only for Android devices. 
+
+```bash
+$ curl https://get.flashlight.dev/ | bash
+```
+
 ## How to start
 
 ```bash
