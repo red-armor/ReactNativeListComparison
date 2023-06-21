@@ -1,11 +1,26 @@
+// https://github.com/bamlab/react-native-flipper-performance-monitor
+#ifdef FB_SONARKIT_ENABLED
+#import <FlipperKit/FlipperClient.h>
+#import <FlipperPerformancePlugin.h>
+#endif
+
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import <ReactNativePerformance/ReactNativePerformance.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  // https://shopify.github.io/react-native-performance/docs/guides/flipper-react-native-performance#ios-native-initialization-
+  [ReactNativePerformance onAppStarted];
+  
+  #ifdef FB_SONARKIT_ENABLED
+  FlipperClient *client = [FlipperClient sharedClient];
+  [client addPlugin:[FlipperPerformancePlugin new]];
+  #endif
+
   self.moduleName = @"ReactNativeListComparison";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.

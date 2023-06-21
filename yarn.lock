@@ -1219,6 +1219,28 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@infinite-list/data-model@^0.2.34":
+  version "0.2.34"
+  resolved "https://registry.yarnpkg.com/@infinite-list/data-model/-/data-model-0.2.34.tgz#020dc7a1d64610047e666c6f83b46c5b8e6c4244"
+  integrity sha512-w0peR92PPyhQGvSGrd0miw6qEt/tAdsCfJ4wIeXJUonOVIint2RS5xirGCjwidzWIN8Z10fiva4ZgxdE7AEgWA==
+  dependencies:
+    "@x-oasis/batchinate-last" "^0.1.10"
+    "@x-oasis/batchinator" "0.1.10"
+    "@x-oasis/capitalize" "0.1.10"
+    "@x-oasis/default-boolean-value" "^0.1.10"
+    "@x-oasis/integer-buffer-set" "0.1.10"
+    "@x-oasis/is-clamped" "0.1.10"
+    "@x-oasis/layout-equal" "0.1.10"
+    "@x-oasis/noop" "0.1.10"
+    "@x-oasis/omit" "0.1.10"
+    "@x-oasis/prefix-interval-tree" "^0.1.10"
+    "@x-oasis/resolve-changed" "0.1.10"
+    "@x-oasis/select-value" "0.1.10"
+    "@x-oasis/shallow-array-equal" "^0.1.10"
+    "@x-oasis/shallow-equal" "0.1.10"
+    "@x-oasis/unique-array-object" "^0.1.10"
+    memoize-one "^6.0.0"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1742,6 +1764,24 @@
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-2.0.0.tgz#4c40b74655c83982c8cf47530ee7dc13d957b6aa"
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
 
+"@shopify/flash-list@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@shopify/flash-list/-/flash-list-1.4.3.tgz#b7a4fe03d64f3c5ce9646859b49b9d95307f203d"
+  integrity sha512-jtIReAbwWzYBV0dQ6Io9wBX+pD0C4qQFMrb5/fkEvX8PYDgBl5KRYvpfr9WLLj8CV2Jsn1X0mYOsB+ysWrI/8g==
+  dependencies:
+    recyclerlistview "4.2.0"
+    tslib "2.4.0"
+
+"@shopify/react-native-performance-lists-profiler@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@shopify/react-native-performance-lists-profiler/-/react-native-performance-lists-profiler-1.1.0.tgz#298d899ac43f83d38356b15c16c6ba109fd6924e"
+  integrity sha512-Jj+9gMQxMqlO4dZFS9HDb8/aI8VraJL67aDrJpV2qWzWr7HUXah96qav3X7+jS0f6YvUDVzpe0cjy6WsVdo3+g==
+
+"@shopify/react-native-performance@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@shopify/react-native-performance/-/react-native-performance-4.1.2.tgz#bd111af291b85ee125feaccd54c8e5f237a76ce7"
+  integrity sha512-1Xu2xo+hAxg75iuX5akVqAgc3h/J1ohfi7JKXlGsprP4ylpW7kHMfq/7AstL7FoUC8xcHsTUvUFhoZ94ot8g6Q==
+
 "@sideway/address@^4.1.3":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.4.tgz#03dccebc6ea47fdc226f7d3d1ad512955d4783f0"
@@ -2010,6 +2050,155 @@
   dependencies:
     "@typescript-eslint/types" "5.60.0"
     eslint-visitor-keys "^3.3.0"
+
+"@x-oasis/batchinate-last@^0.1.10":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/batchinate-last/-/batchinate-last-0.1.12.tgz#af2cc78c962c1401ca43e185c234f3c14e0afad6"
+  integrity sha512-ASOwumu8ASZ/X6d3Zpvt/hQToM6uLDIlBhbVtuAkZdKm4vwa48Y7fzeD+xDW1qeeeVxhlwt0NhS9zcDIAcm/Sg==
+
+"@x-oasis/batchinator@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/batchinator/-/batchinator-0.1.10.tgz#9eff10cf3dbe51f4a792c54d065bbca297f01541"
+  integrity sha512-ucXzf0V2ZbQ1A9nN4XCHbqtP6Lv+JzGIqmte2tnOzkV+6WHNt4Haz7BdMrgaIDpp9JeNQGNItKPk2Z1LFlRlxg==
+  dependencies:
+    "@x-oasis/default-boolean-value" "0.1.10"
+
+"@x-oasis/batchinator@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/batchinator/-/batchinator-0.1.12.tgz#a1458deaafc6b68531ecde7384fbf5aa91e6a99d"
+  integrity sha512-OGSVkQDd3DrgtCii28hY41BxFpRtsVC5o78yPJ7AS4Sw7WvgagEUVJvyLVIPJcORwj2YrkUHi+nlGesf/pnlTw==
+  dependencies:
+    "@x-oasis/default-boolean-value" "0.1.12"
+
+"@x-oasis/capitalize@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/capitalize/-/capitalize-0.1.10.tgz#73dc208beae78500b95b169a5e713bca33168d12"
+  integrity sha512-vz49CJmVaIeiSJ0EzQtF5eLXOJONpGuWeSgff1wCJr6N784zQLxj8Gg6Wa6eWEyAuCHS2IisILNiXAk2ktneZA==
+
+"@x-oasis/default-boolean-value@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/default-boolean-value/-/default-boolean-value-0.1.10.tgz#2781b11f296e5b7d8272cb9d7c942973d3620357"
+  integrity sha512-RFwhgEo9zLDOxtI2vNutKiAjUZD4o+dGLsEah2/chQApqz0Hh9X2O5E5O/nr+4ViC5Wqw3HV8zaCpUVkJrrqtg==
+  dependencies:
+    "@x-oasis/default-value" "0.1.10"
+
+"@x-oasis/default-boolean-value@0.1.12", "@x-oasis/default-boolean-value@^0.1.10":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/default-boolean-value/-/default-boolean-value-0.1.12.tgz#45c682aa9a48af50b9c5e4e581304dabf23f6ba8"
+  integrity sha512-YtM1CZwc5hFci22zIDfK38sth2/O0ZpzQe3bqtP4nScMupca8o8yTrjRNCDVpfQgdkNDMM9rdkip0CICFn8RRQ==
+  dependencies:
+    "@x-oasis/default-value" "0.1.12"
+
+"@x-oasis/default-value@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/default-value/-/default-value-0.1.10.tgz#8fefd2227e65be30d60b7761b19d51c10e41ae91"
+  integrity sha512-35WVj3HvnhjhCHch6pipc7aIu+Kn8KEpVArke8h+t360plqC+WHGxbTn0j2ae2Cjhzp3fwO7vTpcKM/FIoLUQg==
+
+"@x-oasis/default-value@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/default-value/-/default-value-0.1.12.tgz#fe9733ea8ba189534a74c707da9f14441d109526"
+  integrity sha512-MnSYCSq5JNKT/fdlUEwLJ755/jcEYH7jOcGgZBa0bCTOXACFM72TYw40m9q7678blc4qdiAGAvCcnM2BLaZ2Ow==
+
+"@x-oasis/heap@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/heap/-/heap-0.1.10.tgz#f3111dbf5c71c1b60e2946212b8cdf43e31d7364"
+  integrity sha512-MjMdd2faKevrO+e78sRVtD2ip+WV5Roy4IAgKVvA2+GrFWlMRpohTIXpD/jUBTixEjiP5VVo/PGCjjDzV8Iunw==
+
+"@x-oasis/integer-buffer-set@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/integer-buffer-set/-/integer-buffer-set-0.1.10.tgz#0402b48a7b6f31701e18b108c6f877fe82813277"
+  integrity sha512-bmi6er9rCauJWS/xdC+9iaAs/FRLBNmqFiNdC0iR/L5luXu9b7W+oiOiZrupxmgHsGgidjWXd0rsuE1vQKLUnQ==
+  dependencies:
+    "@x-oasis/heap" "0.1.10"
+
+"@x-oasis/is-clamped@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/is-clamped/-/is-clamped-0.1.10.tgz#1cacf570b49a8e8dd2c990759931a56523fb7782"
+  integrity sha512-D8LTq0aRee3mN+penAi1AWIpNYe8AvR4acxwPH4PGVQ3xV/zNN+p3MnSkxWiy21g1Jg5YB01BwwDrTF/Cw2Q7A==
+
+"@x-oasis/is-object@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/is-object/-/is-object-0.1.12.tgz#0a36bfda527eb9bab8be5b730116000174ba8427"
+  integrity sha512-1L+trdifs2+uV8OXqyJ2p2vlX5YW/y1Z01lZcNkBiNJdm0/PY4jxrNgttNdy6ccECghOqxDxq114Q8PDYV4ojw==
+  dependencies:
+    "@x-oasis/to-string" "0.1.12"
+
+"@x-oasis/is-ref@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/is-ref/-/is-ref-0.1.12.tgz#7eb4c62dad359c87397a3879ea5bec372607ef07"
+  integrity sha512-WY9Jkn1jLZxdeoOP/0a9oMKtb56tOeO0Qz/zfvknI4A/WGVapM1VRCkxOrz4kpDIs2oCwHKgnK+DOEa7T9n4Hg==
+  dependencies:
+    "@x-oasis/is-object" "0.1.12"
+
+"@x-oasis/layout-equal@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/layout-equal/-/layout-equal-0.1.10.tgz#9b6111cadfd6a5137b81e1634ed494b7378f6d43"
+  integrity sha512-QqMEkd+inSz0+TAoqNQbT3T7kmorEV/5NKLbPij2yTUAKpSh3t8+4VagdP0FXnN5Ni3GyI/Oc4mkkzFWO9Jv1g==
+
+"@x-oasis/noop@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/noop/-/noop-0.1.10.tgz#2a958ff5e7eed5e6ce6c4b3bf0005b171a7d3238"
+  integrity sha512-jQKhd2b1u8qkygJnAsxZaTxD3ScMkN7tztHet+fyNk1pEMBtLqRKtlpUhUbZkqSuSidtsYAdhQn3bpRNoSLWPA==
+
+"@x-oasis/noop@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/noop/-/noop-0.1.12.tgz#a7c9b3e6c49d21ae83ccc64fe7f60c1cb14d49be"
+  integrity sha512-eX9PM4A/IIcc8NCuYj3TXrEs9Ru4B4k3YpO7Ea+tTbE8WFI4eEZEsWB58uE6Azgx9NcT74NeS0XBWsMKbqmafA==
+
+"@x-oasis/omit@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/omit/-/omit-0.1.10.tgz#acb352e244908d04a0c463b662a83103893ab103"
+  integrity sha512-3nZ2xptkD8MYiwLsBTWK8glt6cPrS4X9JWy8iPjFbmAlU0LQkBGJSEgBA+gfzEx6ayZybRGSOx0M471tk+6Ggg==
+
+"@x-oasis/prefix-interval-tree@^0.1.10":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/prefix-interval-tree/-/prefix-interval-tree-0.1.12.tgz#b969bad3098aa178bc306581a3fe1068feaf53d3"
+  integrity sha512-xJ6teFvWzCe3yyeD408p1MCwfxdfus945VKxje0gqBeZWtbdQnpYvqTL8FnSTtpEA5nv2su8PzP3kekdmTkY+A==
+
+"@x-oasis/resolve-changed@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/resolve-changed/-/resolve-changed-0.1.10.tgz#725dc0d900aa3e2c62b2d952f18711100411a2d4"
+  integrity sha512-cjz1yib1kMKDDVkeR9XaCgvVJ5yosXJy9RGRxmkSH6CU/yqvGfnljb37ip6T0IIPTx7TfMOLaCLUfFd5ZW+Qaw==
+
+"@x-oasis/select-value@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/select-value/-/select-value-0.1.10.tgz#26786e28062327720f4840d08ac54f3e9e7b0725"
+  integrity sha512-nuKlz1nzfvwfX421ITCNuAE5IdbaATqgEDuMFdQZE2EaEZ3Egzs6eiuq2PiKy61l2pNigxd1AMgdEAuxwLdSQw==
+
+"@x-oasis/select-value@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/select-value/-/select-value-0.1.12.tgz#0f5e39881452baf08507f9d40aeb4e867b9dceec"
+  integrity sha512-XGCTDrSJ40SeNbhO48lmFfx+IyzblbubvYz4nmbm79SgC/dla/0Rz+mTcRN/nU3zYX4EoTCg17SqWDStjI2n7Q==
+
+"@x-oasis/shallow-array-equal@^0.1.10":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/shallow-array-equal/-/shallow-array-equal-0.1.12.tgz#890d0d2839ac06fafd4e90a129fad2d9fc98729a"
+  integrity sha512-BGAGyjtwzmR1/NA07YLPdIcBoAdRuWD2+toQXm44siXwa1PmVNiNXGHVp1SWZ/WotfLIq7WmU6yxw75fAQ3neg==
+
+"@x-oasis/shallow-equal@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@x-oasis/shallow-equal/-/shallow-equal-0.1.10.tgz#2b1c220b979e2994c07dc5af26060e6157655870"
+  integrity sha512-jOTSnjFKJlx41GlRfhYrR4/5C9zv1aQ6w1xe/RnREhGucZIyZbAIZel3yHMZnuvuE26JwKva0DCvwtNs8GsV2w==
+
+"@x-oasis/shallow-equal@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/shallow-equal/-/shallow-equal-0.1.12.tgz#b7e7edbeefc4a0b658848a0bb6a6da93d2d5c301"
+  integrity sha512-xQMs34pc/Q4oxVxUtg4TMqDM0QVugEjZz0xcXbPJ2Z4aBRl9hobk02lXDJiwcCZXFzKbfc67LSgAPXIe54xfLQ==
+
+"@x-oasis/throttle@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/throttle/-/throttle-0.1.12.tgz#7defa5c93501e5f282a9ea943b384962f833ea56"
+  integrity sha512-JHZFJKxhVpX6B4UFbJS4fE1n8kol2u2SHB0Jz7KUgteAXM3PGlaoI0rOLCBUG6tPuzD9ey0wKmvJXbc5t/MepA==
+
+"@x-oasis/to-string@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/to-string/-/to-string-0.1.12.tgz#99c2a96eb11c4b6080bd4814fe67af5609a67c0f"
+  integrity sha512-BGvvmj180JzdCRZdtHKhrBdlPYc1tWwwufHLz6EPI4H9D7XkQpZ+vxI1GnPo3/BVpm+Cos5eSGsR7buN6nrjDA==
+
+"@x-oasis/unique-array-object@^0.1.10":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/unique-array-object/-/unique-array-object-0.1.12.tgz#ca9b8caa63dce1fc1b8d0d2f3fb09e1a90053822"
+  integrity sha512-22BZOIotrxF1FaRxwXvF+IZrOenPazDUNKid2LlNkAoycmv+AHxMslerCkXV3wbo4S2/XdgY5zHU1N8dR9VjwQ==
 
 abort-controller@^3.0.0:
   version "3.0.0"
@@ -4807,7 +4996,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash.debounce@^4.0.8:
+lodash.debounce@4.0.8, lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
@@ -4903,6 +5092,11 @@ memoize-one@^5.0.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
+
+memoize-one@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-6.0.0.tgz#b2591b871ed82948aee4727dc6abceeeac8c1045"
+  integrity sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==
 
 merge-stream@^2.0.0:
   version "2.0.0"
@@ -5758,7 +5952,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@*, prop-types@^15.8.1:
+prop-types@*, prop-types@15.8.1, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5784,6 +5978,11 @@ pure-rand@^6.0.0:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/pure-rand/-/pure-rand-6.0.2.tgz#a9c2ddcae9b68d736a8163036f088a2781c8b306"
   integrity sha512-6Yg0ekpKICSjPswYOuC5sku/TSWaRYlA0qsXqJgM/d/4pLPHPuTxK7Nbf7jFKzAeedUhR8C7K9Uv63FBsSo8xQ==
+
+querystringify@^2.1.1:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.2.0.tgz#3345941b4153cb9d082d8eee4cda2016a9aef7f6"
+  integrity sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
@@ -5827,6 +6026,11 @@ react-native-codegen@^0.71.5:
     flow-parser "^0.185.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-flipper-performance-plugin@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper-performance-plugin/-/react-native-flipper-performance-plugin-0.4.0.tgz#961ff2f9ccc942d2a4cabd4f6d401034c5402007"
+  integrity sha512-D9Z5VrktJjUenYB4X9qfKcqg9YSyQWOD7fKoxkzXoKxbyalGoWib79iD3OBHOBZEsk5RbQ006zYL7VQwA3D4Wg==
 
 react-native-gradle-plugin@^0.71.19:
   version "0.71.19"
@@ -5939,6 +6143,15 @@ recast@^0.20.4:
     source-map "~0.6.1"
     tslib "^2.0.1"
 
+recyclerlistview@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-4.2.0.tgz#a140149aaa470c9787a1426452651934240d69ef"
+  integrity sha512-uuBCi0c+ggqHKwrzPX4Z/mJOzsBbjZEAwGGmlwpD/sD7raXixdAbdJ6BTcAmuWG50Cg4ru9p12M94Njwhr/27A==
+  dependencies:
+    lodash.debounce "4.0.8"
+    prop-types "15.8.1"
+    ts-object-utils "0.0.5"
+
 regenerate-unicode-properties@^10.1.0:
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-10.1.0.tgz#7c3192cab6dd24e21cb4461e5ddd7dd24fa8374c"
@@ -6018,6 +6231,11 @@ require-main-filename@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
+
+requires-port@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+  integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
@@ -6663,6 +6881,16 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
+ts-object-utils@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/ts-object-utils/-/ts-object-utils-0.0.5.tgz#95361cdecd7e52167cfc5e634c76345e90a26077"
+  integrity sha512-iV0GvHqOmilbIKJsfyfJY9/dNHCs969z3so90dQWsO1eMMozvTpnB1MEaUbb3FYtZTGjv5sIy/xmslEz0Rg2TA==
+
+tslib@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
+
 tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -6809,6 +7037,14 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha512-Am1ousAhSLBeB9cG/7k7r2R0zj50uDRlZHPGbazid5s9rlF1F/QKYObEKSIunSjIOkJZqwRRLpvewjEkM7pSqg==
+
+url-parse@^1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.10.tgz#9d3c2f736c1d75dd3bd2be507dcc111f1e2ea9c1"
+  integrity sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==
+  dependencies:
+    querystringify "^2.1.1"
+    requires-port "^1.0.0"
 
 use-sync-external-store@^1.0.0:
   version "1.2.0"
