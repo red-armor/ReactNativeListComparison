@@ -49,6 +49,7 @@ export type ItemProps<ItemT extends DefaultItemT> = ItemDefaultProps<ItemT> & {
   isHeadItem?: boolean;
   isStickyItem?: boolean;
   stickyHeaderIndices?: number[];
+  containerKey?: string;
   onMeasureLayout?: ContentOnMeasureLayout<ItemT> | null;
   CellRendererComponent?: React.ComponentType<any> | undefined;
 };

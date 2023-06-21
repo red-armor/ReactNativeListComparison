@@ -70,6 +70,7 @@ const ContextContent = props => {
     onEndReachedHandlerTimeoutThreshold,
     deps,
     dispatchMetricsThreshold,
+    recycleBufferedCount,
     recycleEnabled = false,
     ...rest
   } = props;
@@ -106,7 +107,7 @@ const ContextContent = props => {
       onViewableItemsChanged,
       id: listKey,
       viewabilityConfigCallbackPairs,
-      // recycleBufferedCount: 0,
+      recycleBufferedCount,
 
       // 主要是解决List Item中存在自由职业的viewableItem时如何判断viewable
       parentItemsDimensions: marshal.getRootScrollHelper().getMarshal()

@@ -74,6 +74,8 @@ export interface ListProps<ItemT extends DefaultItemT> extends FlatListProps<Ite
   viewAbilityPropsSensitive?: boolean;
 
   dispatchMetricsThreshold?: number;
+
+  recycleBufferedCount?: number;
 }
 
 export type KeyExtractor<ItemT> = (item: ItemT, index: number) => string;

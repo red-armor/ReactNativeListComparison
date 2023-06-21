@@ -20,10 +20,9 @@ const RenderItem = (props) => {
       case "FL_ITEM":
           return <FlightCard data={item} isDataModel/>;
       case "HEADER":
-          return <TopWidget data={item} isDataModel/>;
+          return <TopWidget data={item}/>;
       default:
           return null;
-
   }
 }
 
@@ -37,6 +36,7 @@ export default () => {
         data={data}
         recycleEnabled
         initialNumToRender={4}
+        recycleBufferedCount={1}
         keyExtractor={keyExtractor}
         renderItem={RenderItem}
       />

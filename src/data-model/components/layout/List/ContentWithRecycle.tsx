@@ -1,10 +1,116 @@
 import { ListDimensions } from '@infinite-list/data-model';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, memo, useState } from 'react';
 import { View } from 'react-native';
 
 import { ViewabilityContext } from '../../container/ScrollView';
 import Item from './item';
 import { ContentProps, DefaultItemT } from './types';
+
+const RecycleContentItem = props => {
+  const { 
+    listKey,
+    renderItem,
+    teleportItemProps,
+    ItemSeparatorComponent,
+    dimensions,
+    CellRendererComponent,
+    viewAbilityPropsSensitive = true,
+    onMeasureItemLayout,
+    item, 
+    isSticky, 
+    offset, 
+    targetKey,
+    containerKey,
+  } = props
+
+  const containerStyle = useMemo(() => ({
+    position: 'absolute',
+    top: !offset ? -4000 : offset,
+    left: 0,
+    right: 0,
+  }), [offset])
+
+  return (
+    <View style={containerStyle}>
+      <Item
+        item={item}
+        itemKey={targetKey}
+        listKey={listKey}
+        ownerId={listKey}
+        containerKey={containerKey}
+        renderItem={renderItem}
+        isStickyItem={isSticky}
+        dimensions={dimensions}
+        onMeasureLayout={onMeasureItemLayout}
+        teleportItemProps={teleportItemProps}
+        viewAbilityPropsSensitive={viewAbilityPropsSensitive}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        CellRendererComponent={CellRendererComponent}
+      />
+    </View>    
+  )
+}
+
+const MemoedRecycleContentItem = memo(RecycleContentItem)
+
+const RecycleContent = props => {
+  const { state, ...rest } = props
+
+  return (
+    state.map(stateResult => {
+      const { key, ...stateResultRest } = stateResult;
+      return (
+        <MemoedRecycleContentItem 
+          key={key}
+          containerKey={key}
+          {...rest}
+          {...stateResultRest}
+        />
+      )
+    })  
+  )
+}
+const MemoedRecycleContent = memo(RecycleContent, (prev, next) => prev.state === next.state)
+
+const SpaceContent = props => {
+  const { state,
+    listKey,
+    renderItem,
+    teleportItemProps,
+    ItemSeparatorComponent,
+    dimensions,
+    CellRendererComponent,
+    viewAbilityPropsSensitive = true,
+    onMeasureItemLayout,
+  } = props
+
+  return (
+    state.map((stateResult, index) => {
+      const { isSpace, key, item, length, isSticky } = stateResult;
+      return isSpace ? (
+        <View key={key} style={{ height: length }} />
+      ) : (
+        <Item
+          item={item}
+          key={key}
+          itemKey={key}
+          listKey={listKey}
+          ownerId={listKey}
+          isHeadItem={!index}
+          renderItem={renderItem}
+          isStickyItem={isSticky}
+          dimensions={dimensions}
+          onMeasureLayout={onMeasureItemLayout}
+          teleportItemProps={teleportItemProps}
+          viewAbilityPropsSensitive={viewAbilityPropsSensitive}
+          ItemSeparatorComponent={ItemSeparatorComponent}
+          CellRendererComponent={CellRendererComponent}
+        />
+      );
+    })    
+  )
+}
+const MemoedSpaceContent = memo(SpaceContent, (prev, next) => prev.state === next.state)
 
 /**
  *
@@ -57,75 +163,44 @@ const Content = <ItemT extends DefaultItemT>(props: ContentProps<ItemT>) => {
     return null;
   }, []);
 
+  console.log('state recycle ', state.recycleState.map(({
+    key, itemMeta, length, 
+  }) => ({
+    key,
+    length,
 
-  // console.log('state recycle ', state.recycleState.map(({
-  //   key, itemMeta, length, 
-  // }) => ({
-  //   key,
-  //   length,
-  //   index: itemMeta.getIndexInfo().index,
-  //   viewable: itemMeta.getState().viewable,
-  // })))
+    index: itemMeta.getIndexInfo().index,
+    viewable: itemMeta.getState().viewable,
+  })))
 
   return (
     // if container has style, then absolute item should be wrapped in View Component
     <WrapperComponent>
-      {state.spaceState.map((stateResult, index) => {
-        const { isSpace, key, item, length, isSticky } = stateResult;
-        return isSpace ? (
-          <View key={key} style={{ height: length }} />
-        ) : (
-          <Item
-            item={item}
-            key={key}
-            itemKey={key}
-            listKey={listKey}
-            ownerId={listKey}
-            isHeadItem={!index}
-            renderItem={renderItem}
-            isStickyItem={isSticky}
-            dimensions={dimensions}
-            onMeasureLayout={_onMeasureItemLayout}
-            teleportItemProps={teleportItemProps}
-            viewAbilityPropsSensitive={viewAbilityPropsSensitive}
-            ItemSeparatorComponent={ItemSeparatorComponent}
-            CellRendererComponent={CellRendererComponent}
-          />
-        );
-      })}
-      {state.recycleState.map((stateResult, index) => {
-        const { key, item, isSticky, offset, targetKey } = stateResult;
-        // console.log('key ', key)
-        return (
-          <View
-            key={key}
-            style={{
-              position: 'absolute',
-              top: !offset ? -4000 : offset,
-              left: 0,
-              right: 0,
-            }}
-          >
-            <Item
-              item={item}
-              key={key}
-              itemKey={targetKey}
-              listKey={listKey}
-              ownerId={listKey}
-              isHeadItem={!index}
-              containerKey={key}
-              renderItem={renderItem}
-              isStickyItem={isSticky}
-              dimensions={dimensions}
-              onMeasureLayout={_onMeasureItemLayout}
-              teleportItemProps={teleportItemProps}
-              viewAbilityPropsSensitive={viewAbilityPropsSensitive}
-              ItemSeparatorComponent={ItemSeparatorComponent}
-              CellRendererComponent={CellRendererComponent}
-            />
-          </View>
-        );
-      })}
+      <MemoedSpaceContent
+        state={state.spaceState}
+        listKey={listKey}
+        ownerId={listKey}
+        renderItem={renderItem}
+        dimensions={dimensions}
+        onMeasureLayout={_onMeasureItemLayout}
+        teleportItemProps={teleportItemProps}
+        viewAbilityPropsSensitive={viewAbilityPropsSensitive}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        CellRendererComponent={CellRendererComponent}                
+      />
+
+      <MemoedRecycleContent
+        state={state.recycleState}
+        listKey={listKey}
+        ownerId={listKey}
+        renderItem={renderItem}
+        dimensions={dimensions}
+        onMeasureLayout={_onMeasureItemLayout}
+        teleportItemProps={teleportItemProps}
+        viewAbilityPropsSensitive={viewAbilityPropsSensitive}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        CellRendererComponent={CellRendererComponent}                
+      />
     </WrapperComponent>
   );
 };
