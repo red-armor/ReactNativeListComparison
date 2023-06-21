@@ -23,6 +23,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.modules.network.NetworkingModule;
 import okhttp3.OkHttpClient;
+import tech.bam.rnperformance.flipper.RNPerfMonitorPlugin;
 
 /**
  * Class responsible of loading Flipper inside your React Native application. This is the debug
@@ -37,6 +38,7 @@ public class ReactNativeFlipper {
       client.addPlugin(new DatabasesFlipperPlugin(context));
       client.addPlugin(new SharedPreferencesFlipperPlugin(context));
       client.addPlugin(CrashReporterPlugin.getInstance());
+      client.addPlugin(new RNPerfMonitorPlugin(reactInstanceManager));
 
       NetworkFlipperPlugin networkFlipperPlugin = new NetworkFlipperPlugin();
       NetworkingModule.setCustomClientBuilder(
