@@ -29,14 +29,18 @@ const RenderItem = (props) => {
 export default () => {
   const [data] = useState(FlightData)
   const keyExtractor = useCallback((_, index) => `key_${index}`, [])
+  const getItemLayout = useCallback((_, index) => ({ length: 80, index }), [])
 
   return (
-    <ScrollView style={{ flex: 1 }} animated>
+    <ScrollView style={{ flex: 1 }} scrollEventThrottle={1}>
       <List
         data={data}
         recycleEnabled
         initialNumToRender={4}
-        recycleBufferedCount={1}
+        recycleBufferedCount={0}
+        // getItemLayout={getItemLayout}
+        // itemApproximateLength={80}
+        dispatchMetricsThreshold={0}
         keyExtractor={keyExtractor}
         renderItem={RenderItem}
       />

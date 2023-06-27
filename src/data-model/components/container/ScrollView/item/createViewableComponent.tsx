@@ -10,6 +10,7 @@ import React, {
   useMemo,
   useRef, // useState,
 } from 'react';
+import { Text } from 'react-native'
 
 import ScrollViewContext from '../context/ScrollViewContext';
 import ViewabilityContext from '../context/ViewabilityContext';
@@ -96,7 +97,7 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
           }
         }
       },
-      [viewableItemHelperKey]
+      []
     );
 
     const getCurrentKey = useCallback(
@@ -160,6 +161,8 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
       if (CellRendererComponent) return {};
       return { ref: viewRef };
     }, []);
+
+    // console.log('contaienr key ===== ', containerKey)
     
     return (
       <ViewableItemContext.Provider value={viewableItemContextValue}>
@@ -179,6 +182,13 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
           >
             {children}
           </MemoedViewableItem>
+          <Text style={{
+            position: 'absolute',
+            top: 10,
+            left: 10,
+          }}>
+            {containerKey + "      " + viewableItemHelperKey}
+          </Text>
         </RenderComponent>
       </ViewableItemContext.Provider>
     );

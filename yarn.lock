@@ -2160,6 +2160,11 @@
   resolved "https://registry.yarnpkg.com/@x-oasis/resolve-changed/-/resolve-changed-0.1.10.tgz#725dc0d900aa3e2c62b2d952f18711100411a2d4"
   integrity sha512-cjz1yib1kMKDDVkeR9XaCgvVJ5yosXJy9RGRxmkSH6CU/yqvGfnljb37ip6T0IIPTx7TfMOLaCLUfFd5ZW+Qaw==
 
+"@x-oasis/resolve-changed@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@x-oasis/resolve-changed/-/resolve-changed-0.1.12.tgz#015f0d50a4c246963873b13444a4c2f5bbd7fbb9"
+  integrity sha512-iWlo4985ryD8+vyGoNKZ5wI0JrKAhfviHxka2R8fntSQjBf4pxz6b3vCwOqya6tcWTGsMssNyE6q56oOQHLxwQ==
+
 "@x-oasis/select-value@0.1.10":
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@x-oasis/select-value/-/select-value-0.1.10.tgz#26786e28062327720f4840d08ac54f3e9e7b0725"

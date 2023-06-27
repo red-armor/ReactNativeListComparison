@@ -15,6 +15,7 @@
     "@x-oasis/batchinator": "^0.1.12",
     "@x-oasis/is-ref": "^0.1.12",
     "@x-oasis/noop": "^0.1.12",
+    "@x-oasis/resolve-changed": "^0.1.12",
     "@x-oasis/select-value": "^0.1.12",
     "@x-oasis/shallow-equal": "^0.1.12",
     "@x-oasis/throttle": "^0.1.12",

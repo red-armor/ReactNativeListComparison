@@ -40,7 +40,7 @@ export default (
   const layoutHandler = useMemo(
     () => (e: LayoutChangeEvent) => {
       if (typeof onLayout === 'function') onLayout(e);
-      // console.log('layout handelr value ', getCurrentKey())
+      // console.log('layout handler value ========== ', options.getCurrentKey(), e.nativeEvent.layout)
       onMeasureLayout(e.nativeEvent.layout);
     },
     [onLayout]
@@ -62,6 +62,7 @@ export default (
           );
         },
         (x, y, width, height) => {
+          // console.log('set handler ==== ', options.getCurrentKey(), width, height)
           onMeasureLayout({ x, y, width, height });
         }
       );

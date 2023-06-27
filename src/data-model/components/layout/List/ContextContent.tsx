@@ -72,6 +72,8 @@ const ContextContent = props => {
     dispatchMetricsThreshold,
     recycleBufferedCount,
     recycleEnabled = false,
+
+    itemApproximateLength,
     ...rest
   } = props;
   const contentRef = useRef();
@@ -88,6 +90,8 @@ const ContextContent = props => {
     );
     return helper?.getLayout();
   }, []);
+
+  console.log('dispatchMetricsThreshold ', recycleBufferedCount, dispatchMetricsThreshold )
 
   const contextValues = useMemo(() => {
     const dimensions = new ListDimensions({
@@ -116,7 +120,10 @@ const ContextContent = props => {
       onEndReachedThreshold,
       onEndReachedTimeoutThreshold,
       dispatchMetricsThreshold,
+      // useItemApproximateLayout,
+      itemApproximateLength,
       onEndReachedHandlerTimeoutThreshold,
+      useItemApproximateLength: false
     });
 
     if (typeof setInstance === 'function') {
@@ -179,9 +186,13 @@ const ContextContent = props => {
     []
   );
 
+  // const dateRef = useRef(Date.now())
+
   useEffect(
     () =>
       scrollEventHelper.subscribeEventHandler('onScroll', () => {
+        // console.log('elapsed ', Date.now() - dateRef.current)
+        // dateRef.current = Date.now()
         const scrollMetrics = scrollHelper.getScrollMetrics();
         if (scrollMetrics !== scrollMetricsRef.current) {
           contextValues.dimensions.updateScrollMetrics(

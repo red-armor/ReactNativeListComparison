@@ -1,10 +1,12 @@
 import { ListDimensions } from '@infinite-list/data-model';
-import React, { useContext, useEffect, useMemo, memo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, memo, useState, useRef } from 'react';
 import { View } from 'react-native';
+import resolveChanged from '@x-oasis/resolve-changed'
 
 import { ViewabilityContext } from '../../container/ScrollView';
 import Item from './item';
 import { ContentProps, DefaultItemT } from './types';
+import shallowEqual from '@x-oasis/shallow-equal';
 
 const RecycleContentItem = props => {
   const { 
@@ -55,6 +57,37 @@ const MemoedRecycleContentItem = memo(RecycleContentItem)
 
 const RecycleContent = props => {
   const { state, ...rest } = props
+  const stateRef = useRef(state)
+
+  // useEffect(() => {
+  //   const now = Date.now()
+  //   // console.log('start ========', now)
+  //   const changed = resolveChanged(stateRef.current, state, shallowEqual)
+  //   if (changed.added.length) {
+  //     console.log('added ', changed.added.map(({
+  //       key, itemMeta, length, ...rest
+  //     }) => ({
+  //       key,
+  //       length,    
+  //       index: itemMeta.getIndexInfo().index,
+  //       viewable: itemMeta.getState().viewable,
+  //       ...rest
+  //     })))
+  //   }
+  //   if (changed.removed.length) {
+  //     console.log('removed ', changed.removed.map(({
+  //       key, itemMeta, length, ...rest
+  //     }) => ({
+  //       key,
+  //       length,    
+  //       index: itemMeta.getIndexInfo().index,
+  //       viewable: itemMeta.getState().viewable,
+  //       ...rest,
+  //     })))
+  //   }
+  //   console.log('end =========', now)
+  //   stateRef.current = state
+  // }, [state])
 
   return (
     state.map(stateResult => {
@@ -163,15 +196,15 @@ const Content = <ItemT extends DefaultItemT>(props: ContentProps<ItemT>) => {
     return null;
   }, []);
 
-  console.log('state recycle ', state.recycleState.map(({
-    key, itemMeta, length, 
-  }) => ({
-    key,
-    length,
+  // console.log('state recycle ', state.recycleState.map(({
+  //   key, itemMeta, length, 
+  // }) => ({
+  //   key,
+  //   length,
 
-    index: itemMeta.getIndexInfo().index,
-    viewable: itemMeta.getState().viewable,
-  })))
+  //   index: itemMeta.getIndexInfo().index,
+  //   viewable: itemMeta.getState().viewable,
+  // })))
 
   return (
     // if container has style, then absolute item should be wrapped in View Component
