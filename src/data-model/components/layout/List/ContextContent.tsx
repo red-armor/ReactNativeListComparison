@@ -91,7 +91,7 @@ const ContextContent = props => {
     return helper?.getLayout();
   }, []);
 
-  console.log('dispatchMetricsThreshold ', recycleBufferedCount, dispatchMetricsThreshold )
+  // console.log('dispatchMetricsThreshold ', recycleBufferedCount, dispatchMetricsThreshold )
 
   const contextValues = useMemo(() => {
     const dimensions = new ListDimensions({
@@ -121,9 +121,9 @@ const ContextContent = props => {
       onEndReachedTimeoutThreshold,
       dispatchMetricsThreshold,
       // useItemApproximateLayout,
-      itemApproximateLength,
+      itemApproximateLength: 80,
       onEndReachedHandlerTimeoutThreshold,
-      useItemApproximateLength: false
+      // useItemApproximateLength: false
     });
 
     if (typeof setInstance === 'function') {
@@ -238,19 +238,19 @@ const ContextContent = props => {
   );
 
   return (
-    <ViewableItem
-      // @ts-ignore
-      ref={contentRef}
-      // TODO：getContainerOffset会涉及到从`general`中拿对应的值；但是在`useViewable`
-      // 已经将非ListItem的数据放置到了顶层；但是，目前考虑到List所有的属性尽量收归
-      // 到当前general；后续即使不设置`isIntervalTreeItem`的话，也最好将
-      listKey={listKey}
-      onMeasureLayout={onMeasureLayout}
-      viewableItemHelperKey={viewableItemHelperKey}
-      setMeasureLayoutHandler={setMeasureLayoutHandler}
-      viewAbilityPropsSensitive={false}
-      {...styleProps}
-    >
+    // <ViewableItem
+    //   // @ts-ignore
+    //   ref={contentRef}
+    //   // TODO：getContainerOffset会涉及到从`general`中拿对应的值；但是在`useViewable`
+    //   // 已经将非ListItem的数据放置到了顶层；但是，目前考虑到List所有的属性尽量收归
+    //   // 到当前general；后续即使不设置`isIntervalTreeItem`的话，也最好将
+    //   listKey={listKey}
+    //   onMeasureLayout={onMeasureLayout}
+    //   viewableItemHelperKey={viewableItemHelperKey}
+    //   setMeasureLayoutHandler={setMeasureLayoutHandler}
+    //   viewAbilityPropsSensitive={false}
+    //   {...styleProps}
+    // >
       <ViewabilityContext.Provider value={contextValues}>
         <ContentComponent
           {...rest}
@@ -261,7 +261,7 @@ const ContextContent = props => {
           viewAbilityPropsSensitive={viewAbilityPropsSensitive}
         />
       </ViewabilityContext.Provider>
-    </ViewableItem>
+    // </ViewableItem>
   );
 };
 

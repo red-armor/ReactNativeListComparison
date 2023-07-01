@@ -40,13 +40,14 @@ export default (
   const layoutHandler = useMemo(
     () => (e: LayoutChangeEvent) => {
       if (typeof onLayout === 'function') onLayout(e);
-      // console.log('layout handler value ========== ', options.getCurrentKey(), e.nativeEvent.layout)
+      // console.log('viewableItemHelperKeyRef.current ', options.getCurrentKey(), e.nativeEvent.layout)
       onMeasureLayout(e.nativeEvent.layout);
     },
     [onLayout]
   );
 
   const handler = useCallback(() => {
+    // return
     if (!itemRef.current) return;
 
     try {

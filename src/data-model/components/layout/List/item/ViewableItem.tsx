@@ -20,6 +20,7 @@ const ViewableItem = <ItemT extends DefaultItemT>(
     CellRendererComponent,
     viewableItemHelperKey,
     viewAbilityPropsSensitive = true,
+    ...rest
   } = props;
 
   const getMetaOnViewableItemsChanged = useCallback(() => {
@@ -43,6 +44,7 @@ const ViewableItem = <ItemT extends DefaultItemT>(
       CellRendererComponent={CellRendererComponent}
       getMetaOnViewableItemsChanged={getMetaOnViewableItemsChanged}
       viewAbilityPropsSensitive={viewAbilityPropsSensitive}
+      {...rest}
     >
       <MemoedItem
         item={item}

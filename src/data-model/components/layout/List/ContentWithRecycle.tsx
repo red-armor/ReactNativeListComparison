@@ -1,5 +1,5 @@
 import { ListDimensions } from '@infinite-list/data-model';
-import React, { useContext, useEffect, useMemo, memo, useState, useRef } from 'react';
+import React, { useContext, useEffect, useMemo, memo, useState, useRef, useCallback } from 'react';
 import { View } from 'react-native';
 import resolveChanged from '@x-oasis/resolve-changed'
 
@@ -20,22 +20,46 @@ const RecycleContentItem = props => {
     onMeasureItemLayout,
     item, 
     isSticky, 
-    offset, 
+    // offset, 
     targetKey,
     containerKey,
+    forwardRef,
+    index,
+    setRef,
   } = props
 
   const containerStyle = useMemo(() => ({
     position: 'absolute',
-    top: !offset ? -4000 : offset,
+    // top:  -4000,
     left: 0,
     right: 0,
-  }), [offset])
+  }), [])
+
+  const offsetRef = useRef()
+  // const ref = useRef()
+
+  // console.log('dimensions.getKeyMeta(targetKey).isApproximateLayout ', dimensions.getKeyMeta(targetKey).isApproximateLayout)
+
+  // if (offsetRef.current !== offset && (ref.current)) {
+  //   offsetRef.current !== offset
+  //   ref.current.setNativeProps({
+  //     position: 'absolute',
+  //     top: dimensions.getKeyMeta(targetKey).isApproximateLayout ? -4000 : offset,
+  //     left: 0,
+  //     right: 0,
+  //   })
+  // }
+
+  useEffect(() => {
+    setRef(index, offsetRef)
+    // refs[index] = offsetRef
+  }, [])
 
   return (
-    <View style={containerStyle}>
+    <View style={containerStyle} ref={offsetRef}>
       <Item
         item={item}
+        // style={containerStyle}
         itemKey={targetKey}
         listKey={listKey}
         ownerId={listKey}
@@ -54,10 +78,62 @@ const RecycleContentItem = props => {
 }
 
 const MemoedRecycleContentItem = memo(RecycleContentItem)
+// const MemoedRecycleContentItem = memo(React.forwardRef((props, ref) => <RecycleContentItem {...props} forwardRef={ref} />))
 
 const RecycleContent = props => {
   const { state, ...rest } = props
   const stateRef = useRef(state)
+  const refs = useMemo(() => [], [])
+  const dimensions = props.dimensions
+
+  const setRef = useCallback((index, ref) => {
+    refs[index] = ref
+  }, [])
+
+  useEffect(() => {
+    state.map((s, index) => {
+      const { offset, targetKey } = s
+      const old = stateRef.current?.[index]
+
+      // setTimeout(() => {
+        refs[index].current?.setNativeProps({
+          position: 'absolute',
+          top:  offset,
+          left: 0,
+          right: 0,
+        })
+      // })
+
+      // console.log('refs[index].current ', refs[index].current)
+
+      // if (!old) {
+      //   console.log('old ==========')
+      //   setTimeout(() => {
+      //     refs[index].current?.setNativeProps({
+      //       position: 'absolute',
+      //       top: offset,
+      //       left: 0,
+      //       right: 0,
+      //     })
+      //   })
+      // } else if (s.offset !== old.offset) {
+
+      //   console.log('jdlfalflasfjklsajklfa--------', index, targetKey, dimensions.getKeyMeta(targetKey).isApproximateLayout, offset, !!refs[index].current)
+
+
+      //   setTimeout(() => {
+      //     refs[index].current?.setNativeProps({
+      //       position: 'absolute',
+      //       top:  offset,
+      //       left: 0,
+      //       right: 0,
+      //     })
+      //   })
+      // }
+    })
+
+    stateRef.current = state
+  }, [state])
 
   // useEffect(() => {
   //   const now = Date.now()
@@ -90,11 +166,16 @@ const RecycleContent = props => {
   // }, [state])
 
   return (
-    state.map(stateResult => {
-      const { key, ...stateResultRest } = stateResult;
+    state.map((stateResult, index) => {
+      const { key, offset, length, ...stateResultRest } = stateResult;
+
+
       return (
         <MemoedRecycleContentItem 
           key={key}
+          setRef={setRef}
+          index={index}
+          // ref={refs[index]}
           containerKey={key}
           {...rest}
           {...stateResultRest}
@@ -229,7 +310,7 @@ const Content = <ItemT extends DefaultItemT>(props: ContentProps<ItemT>) => {
         renderItem={renderItem}
         dimensions={dimensions}
         onMeasureLayout={_onMeasureItemLayout}
-        teleportItemProps={teleportItemProps}
+        // teleportItemProps={teleportItemProps}
         viewAbilityPropsSensitive={viewAbilityPropsSensitive}
         ItemSeparatorComponent={ItemSeparatorComponent}
         CellRendererComponent={CellRendererComponent}                

@@ -37,6 +37,11 @@ const BasicScrollRenderer: FC<ScrollRendererPropsWithForwardRef> = (props) => {
     scrollHelper,
   });
 
+  const _handler = useCallback((e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    scrollHelper.onScroll(e);
+
+  }, [])
+
   const throttledHandler = useMemo(() => {
     function handler(e: NativeSyntheticEvent<NativeScrollEvent>) {
       scrollHelper.onScroll(e);
@@ -73,9 +78,9 @@ const BasicScrollRenderer: FC<ScrollRendererPropsWithForwardRef> = (props) => {
       {...restProps}
       ref={forwardRef}
       onLayout={layoutHandler}
-      onScroll={throttledHandler}
+      onScroll={_handler}
       scrollEnabled={_scrollEnabled}
-      scrollEventThrottle={scrollEventThrottle}
+      scrollEventThrottle={1}
     >
       {children}
     </ScrollView>

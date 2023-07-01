@@ -76,6 +76,8 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
         const nextLayout = { x, y, width, height };
 
         if (!layout || !shallowEqual(nextLayout, layout)) {
+          // console.log("viewableItemHelperKeyRef.current ", viewableItemHelperKeyRef.current, { height })
+
           if (dimensions instanceof ListGroupDimensions) {
             dimensions.setKeyItemLayout(
               viewableItemHelperKeyRef.current,
@@ -100,9 +102,42 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
       []
     );
 
+    const _onLayout = useCallback((e) => {
+      const { x, y, height, width } = e.nativeEvent.layout
+      // if (typeof _onMeasureLayout === 'function') {
+      //   _onMeasureLayout(x, y, width, height);
+      // }
+      const meta = dimensions.ensureKeyMeta(
+        viewableItemHelperKeyRef.current,
+        ownerId
+      );
+      const layout = meta?.getLayout();
+      const nextLayout = { x, y, width: parseInt(width), height: parseInt(height) };
+
+      if (!layout || !shallowEqual(nextLayout, layout)) {
+        // console.log("viewableItemHelperKeyRef.current ", viewableItemHelperKeyRef.current, { height })
+
+        if (dimensions instanceof ListGroupDimensions) {
+          dimensions.setKeyItemLayout(
+            viewableItemHelperKeyRef.current,
+            ownerId,
+            nextLayout
+            // {
+            //   x,
+            //   y,
+            //   width,
+            //   height,
+            // }
+          );
+        } else {
+          dimensions.setKeyItemLayout(viewableItemHelperKeyRef.current,nextLayout);
+        }
+      }
+    }, [])
+
     const getCurrentKey = useCallback(
-      () => viewableItemHelperKeyRef.current,
-      []
+      () => `${viewableItemHelperKeyRef.current}_${containerKey}`,
+      [containerKey]
     );
 
     const { handler, layoutHandler } = useMeasureLayout(
@@ -124,7 +159,7 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
           viewableItemHelperKeyRef.current,
           ownerId
         );
-        if (meta && !meta?.getLayout()) {
+        if (meta && (!meta?.getLayout() || meta.isApproximateLayout))  {
           setTimeout(() => handler(), 0);
         }
       }
@@ -168,7 +203,8 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
       <ViewableItemContext.Provider value={viewableItemContextValue}>
         <RenderComponent
           style={containerStyle}
-          onLayout={layoutHandler}
+          // onLayout={layoutHandler}
+          onLayout={_onLayout}
           key={containerKey || viewableItemHelperKey}
           cellKey={viewableItemHelperKey}
           itemMeta={viewableItemContextValue.itemMeta}
