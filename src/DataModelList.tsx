@@ -32,7 +32,7 @@ export default () => {
   const getItemLayout = useCallback((_, index) => ({ length: 80, index }), [])
 
   return (
-    <ScrollView style={{ flex: 1 }} scrollEventThrottle={1}>
+    <ScrollView style={{ flex: 1 }} scrollEventThrottle={16}>
       <List
         data={data}
         recycleEnabled
@@ -40,8 +40,8 @@ export default () => {
         recycleBufferedCount={0}
         // maxToRenderPerBatch={6}
         // getItemLayout={getItemLayout}
-        // itemApproximateLength={80}
-        dispatchMetricsThreshold={0}
+        itemApproximateLength={80}
+        dispatchMetricsThreshold={16}
         keyExtractor={keyExtractor}
         renderItem={RenderItem}
       />
