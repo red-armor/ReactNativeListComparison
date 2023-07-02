@@ -200,33 +200,35 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
     // console.log('contaienr key ===== ', containerKey)
     
     return (
-      <ViewableItemContext.Provider value={viewableItemContextValue}>
-        <RenderComponent
-          style={containerStyle}
-          // onLayout={layoutHandler}
-          onLayout={_onLayout}
-          key={containerKey || viewableItemHelperKey}
-          cellKey={viewableItemHelperKey}
-          itemMeta={viewableItemContextValue.itemMeta}
-          {...refProps}
-          {...rest}
-        >
-          <MemoedViewableItem
-            {...rest}
-            itemMeta={viewableItemContextValue.itemMeta}
-            viewableItemHelperKey={viewableItemHelperKey}
-          >
+      // <ViewableItemContext.Provider value={viewableItemContextValue}>
+        // <RenderComponent
+        //   style={containerStyle}
+        //   // onLayout={layoutHandler}
+        //   onLayout={_onLayout}
+        //   key={containerKey || viewableItemHelperKey}
+        //   cellKey={viewableItemHelperKey}
+        //   itemMeta={viewableItemContextValue.itemMeta}
+        //   {...refProps}
+        //   {...rest}
+        // >
+          // <MemoedViewableItem
+          //   {...rest}
+          //   itemMeta={viewableItemContextValue.itemMeta}
+          //   viewableItemHelperKey={viewableItemHelperKey}
+          // >
+          <>
             {children}
-          </MemoedViewableItem>
-          <Text style={{
-            position: 'absolute',
-            top: 10,
-            left: 10,
-          }}>
-            {containerKey + "      " + viewableItemHelperKey}
-          </Text>
-        </RenderComponent>
-      </ViewableItemContext.Provider>
+          </>
+          // </MemoedViewableItem>
+          // {/* <Text style={{
+          //   position: 'absolute',
+          //   top: 10,
+          //   left: 10,
+          // }}>
+          //   {containerKey + "      " + viewableItemHelperKey}
+          // </Text> */}
+        // {/* </RenderComponent> */}
+      // {/* </ViewableItemContext.Provider> */}
     );
   };
 

@@ -78,9 +78,9 @@ const BasicScrollRenderer: FC<ScrollRendererPropsWithForwardRef> = (props) => {
       {...restProps}
       ref={forwardRef}
       onLayout={layoutHandler}
-      onScroll={_handler}
+      onScroll={throttledHandler}
       scrollEnabled={_scrollEnabled}
-      scrollEventThrottle={1}
+      scrollEventThrottle={scrollEventThrottle}
     >
       {children}
     </ScrollView>

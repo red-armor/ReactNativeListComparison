@@ -21,9 +21,9 @@ const App = () => {
 
   return (
     <>
-      {/* <DataModelList /> */}
+      <DataModelList />
       {/* <Flight /> */}
-      <FlashList />
+      {/* <FlashList /> */}
     </>
   )
 

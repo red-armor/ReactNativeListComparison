@@ -3,13 +3,15 @@ import { DefaultItemT, ItemProps } from '../types';
 import StickyItem from './StickyItem';
 import ViewableItem from './ViewableItem';
 
-const Item = <ItemT extends DefaultItemT>(props: ItemProps<ItemT>) => {
+const ListItem = <ItemT extends DefaultItemT>(props: ItemProps<ItemT>) => {
   const {
     item,
     itemKey,
     isHeadItem,
     isStickyItem,
     onMeasureLayout,
+
+    renderItem: RenderedItem,
     CellRendererComponent,
     ItemSeparatorComponent,
     viewAbilityPropsSensitive,
@@ -38,7 +40,16 @@ const Item = <ItemT extends DefaultItemT>(props: ItemProps<ItemT>) => {
   return (
     <>
       {!isHeadItem && ItemSeparatorComponent && <ItemSeparatorComponent />}
-      {React.createElement(isStickyItem ? StickyItem : ViewableItem, {
+
+      <RenderedItem
+        item={item}
+        // listKey={listKey}
+        itemKey={itemKey}
+        // renderItem={renderItem}
+        // teleportItemProps={teleportItemProps}
+        // dimensions={dimensions}
+      />
+      {/* {React.createElement(isStickyItem ? StickyItem : ViewableItem, {
         item,
         itemKey,
         isListItem: true,
@@ -47,9 +58,9 @@ const Item = <ItemT extends DefaultItemT>(props: ItemProps<ItemT>) => {
         viewableItemHelperKey: itemKey,
         viewAbilityPropsSensitive,
         ...rest,
-      })}
+      })} */}
     </>
   );
 };
 
-export default memo(Item);
+export default memo(ListItem);

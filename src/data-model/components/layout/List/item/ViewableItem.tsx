@@ -14,7 +14,7 @@ const ViewableItem = <ItemT extends DefaultItemT>(
     listKey,
     dimensions,
     containerKey,
-    renderItem,
+    renderItem: RenderedItem,
     teleportItemProps,
     measureLayoutHandler,
     CellRendererComponent,
@@ -46,11 +46,11 @@ const ViewableItem = <ItemT extends DefaultItemT>(
       viewAbilityPropsSensitive={viewAbilityPropsSensitive}
       {...rest}
     >
-      <MemoedItem
+      <RenderedItem
         item={item}
         listKey={listKey}
         itemKey={itemKey}
-        renderItem={renderItem}
+        // renderItem={renderItem}
         teleportItemProps={teleportItemProps}
         dimensions={dimensions}
       />

@@ -184,7 +184,8 @@ const RecycleContent = props => {
     })  
   )
 }
-const MemoedRecycleContent = memo(RecycleContent, (prev, next) => prev.state === next.state)
+// const MemoedRecycleContent = memo(RecycleContent, (prev, next) => prev.state === next.state)
+const MemoedRecycleContent = memo(RecycleContent)
 
 const SpaceContent = props => {
   const { state,
