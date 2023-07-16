@@ -27,10 +27,14 @@ const RecycleContentItem = props => {
 
   const containerStyle = useMemo(() => ({
     position: 'absolute',
-    top: !offset ? -4000 : offset,
+    top: offset,
+    // top: dimensions.getKeyMeta(targetKey).isApproximateLayout ? -4000 : offset,
+    // top: !offset ? -4000 : offset,
     left: 0,
     right: 0,
   }), [offset])
+
+  // console.log('dimensions.getKeyMeta().isApproximateLayout ', dimensions.getKeyMeta(targetKey).isApproximateLayout)
 
   return (
     <View style={containerStyle}>

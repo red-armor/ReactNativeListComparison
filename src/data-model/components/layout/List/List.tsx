@@ -40,6 +40,7 @@ const List = <ItemT extends DefaultItemT>(props: ListProps<ItemT>) => {
   const renderItemRef = useRef(renderItem);
   useEffect(() => {
     if (renderItemRef.current !== renderItem) {
+
       renderItemRef.current = renderItem;
       console.warn("[Spectrum warn]: `renderItem` props shouldn't be changed.");
     }

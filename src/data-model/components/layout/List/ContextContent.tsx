@@ -91,7 +91,7 @@ const ContextContent = props => {
     return helper?.getLayout();
   }, []);
 
-  console.log('dispatchMetricsThreshold ', recycleBufferedCount, dispatchMetricsThreshold )
+  // console.log('dispatchMetricsThreshold ', recycleBufferedCount, dispatchMetricsThreshold )
 
   const contextValues = useMemo(() => {
     const dimensions = new ListDimensions({
@@ -123,7 +123,7 @@ const ContextContent = props => {
       // useItemApproximateLayout,
       itemApproximateLength,
       onEndReachedHandlerTimeoutThreshold,
-      useItemApproximateLength: false
+      // useItemApproximateLength: false
     });
 
     if (typeof setInstance === 'function') {

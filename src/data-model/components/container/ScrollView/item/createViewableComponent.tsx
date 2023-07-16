@@ -124,7 +124,7 @@ const createViewableComponent = <T extends React.ComponentType<any>>(
           viewableItemHelperKeyRef.current,
           ownerId
         );
-        if (meta && !meta?.getLayout()) {
+        if (meta && (!meta?.getLayout() || meta?.isApproximateLayout)) {
           setTimeout(() => handler(), 0);
         }
       }

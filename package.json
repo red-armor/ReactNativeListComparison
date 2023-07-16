@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@infinite-list/data-model": "^0.2.34",
+    "@infinite-list/data-model": "^0.2.40",
     "@shopify/flash-list": "^1.4.3",
     "@x-oasis/batchinator": "^0.1.12",
     "@x-oasis/is-ref": "^0.1.12",
